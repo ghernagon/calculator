@@ -14,6 +14,19 @@ class ViewController: UIViewController {
     
     var userIsInTheMiddleOfTypingNumber: Bool = false
     
+    var operandStack: Array<Double> = Array<Double>()
+    
+    //Computed properties
+    var displayValue: Double {
+        get {
+            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+        }
+        set {
+            display.text = "\(newValue)"
+            userIsInTheMiddleOfTypingNumber = false
+        }
+    }
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         print("digit = \(digit)")
@@ -22,6 +35,77 @@ class ViewController: UIViewController {
         } else {
             display.text = digit
             userIsInTheMiddleOfTypingNumber = true
+        }
+    }
+    
+    @IBAction func enter() {
+        userIsInTheMiddleOfTypingNumber = false
+        operandStack.append(displayValue)
+        print("operandStack = \(operandStack)")
+        
+    }
+    
+    @IBAction func operate(sender: UIButton) {
+        let operation = sender.currentTitle!
+        if userIsInTheMiddleOfTypingNumber {
+            enter()
+        }
+        
+        //Ways of closures
+//        switch operation { //Closures
+//        case "×": performOperation({ (op1, op2) in return op1 * op2 })
+//        case "÷": performOperation({ (op1, op2) in return op1 / op2 })
+//        case "+": performOperation({ (op1, op2) in return op1 + op2 })
+//        case "−": performOperation({ (op1, op2) in return op1 - op2 })
+//        default: break
+//            
+//        }
+//        
+//        //OR
+//        switch operation { //Closures
+//        case "×": performOperation({ (op1, op2) in op1 * op2 })
+//        case "÷": performOperation({ (op1, op2) in op1 / op2 })
+//        case "+": performOperation({ (op1, op2) in op1 + op2 })
+//        case "−": performOperation({ (op1, op2) in op1 - op2 })
+//        default: break
+//            
+//        }
+        
+//        //OR
+//        switch operation { //Closures
+//        case "×": performOperation({ $0 * $1 })
+//        case "÷": performOperation({ $0 / $1 })
+//        case "+": performOperation({ $0 + $1 })
+//        case "−": performOperation({ $0 - $1 })
+//        default: break
+//            
+//        }
+        
+        //OR
+        switch operation { //Closures - Cause this is the last argument
+        case "×": performOperation { $0 * $1 }
+        case "÷": performOperation { $1 / $0 }
+        case "+": performOperation { $0 + $1 }
+        case "−": performOperation { $1 - $0 }
+        case "√": performOperation { sqrt($0) }
+        default: break
+            
+        }
+        
+    }
+    
+    //Type method
+    private func performOperation(operation: (Double, Double) -> Double) {
+        if operandStack.count >= 2 {
+            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
+            enter()
+        }
+    }
+    //Same type method but arguments
+    private func performOperation(operation: Double -> Double) {
+        if operandStack.count >= 1 {
+            displayValue = operation(operandStack.removeLast())
+            enter()
         }
     }
     
