@@ -54,14 +54,22 @@
 		C2A66DB81C8C956500AE46B2 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				C2A66DB91C8C956500AE46B2 /* AppDelegate.swift */,
 				C2A66DBB1C8C956500AE46B2 /* ViewController.swift */,
 				C2A66DBD1C8C956500AE46B2 /* Main.storyboard */,
+				C2A66DCB1C8C964700AE46B2 /* Supporting Files */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		C2A66DCB1C8C964700AE46B2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2A66DB91C8C956500AE46B2 /* AppDelegate.swift */,
 				C2A66DC01C8C956600AE46B2 /* Assets.xcassets */,
 				C2A66DC21C8C956600AE46B2 /* LaunchScreen.storyboard */,
 				C2A66DC51C8C956600AE46B2 /* Info.plist */,
 			);
-			path = Calculator;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
