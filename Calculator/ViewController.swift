@@ -14,7 +14,9 @@ class ViewController: UIViewController {
     
     var userIsInTheMiddleOfTypingNumber: Bool = false
     
-    var operandStack: Array<Double> = Array<Double>()
+    //var operandStack: Array<Double> = Array<Double>()
+    
+    var brain = CalculatorBrain()
     
     //Computed properties
     var displayValue: Double {
@@ -40,15 +42,28 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingNumber = false
-        operandStack.append(displayValue)
-        print("operandStack = \(operandStack)")
+//        operandStack.append(displayValue)
+//        print("operandStack = \(operandStack)")
+        
+        if let result = brain.pushOperand(displayValue){
+            displayValue = result
+        } else {
+            displayValue = 0
+        }
         
     }
     
     @IBAction func operate(sender: UIButton) {
-        let operation = sender.currentTitle!
         if userIsInTheMiddleOfTypingNumber {
             enter()
+        }
+        
+        if let operation = sender.currentTitle {
+            if let result = brain.performOperation(operation) {
+                displayValue = result
+            } else {
+                displayValue = 0
+            }
         }
         
         //Ways of closures
@@ -82,32 +97,32 @@ class ViewController: UIViewController {
 //        }
         
         //OR
-        switch operation { //Closures - Cause this is the last argument
-        case "×": performOperation { $0 * $1 }
-        case "÷": performOperation { $1 / $0 }
-        case "+": performOperation { $0 + $1 }
-        case "−": performOperation { $1 - $0 }
-        case "√": performOperation { sqrt($0) }
-        default: break
-            
-        }
+//        switch operation { //Closures - Cause this is the last argument
+//        case "×": performOperation { $0 * $1 }
+//        case "÷": performOperation { $1 / $0 }
+//        case "+": performOperation { $0 + $1 }
+//        case "−": performOperation { $1 - $0 }
+//        case "√": performOperation { sqrt($0) }
+//        default: break
+        
+//        }
         
     }
     
-    //Type method
-    private func performOperation(operation: (Double, Double) -> Double) {
-        if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
-            enter()
-        }
-    }
-    //Same type method but arguments
-    private func performOperation(operation: Double -> Double) {
-        if operandStack.count >= 1 {
-            displayValue = operation(operandStack.removeLast())
-            enter()
-        }
-    }
+//    //Type method
+//    private func performOperation(operation: (Double, Double) -> Double) {
+//        if operandStack.count >= 2 {
+//            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
+//            enter()
+//        }
+//    }
+//    //Same type method but arguments
+//    private func performOperation(operation: Double -> Double) {
+//        if operandStack.count >= 1 {
+//            displayValue = operation(operandStack.removeLast())
+//            enter()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

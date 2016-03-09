@@ -12,6 +12,7 @@
 		C2A66DBF1C8C956500AE46B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A66DBD1C8C956500AE46B2 /* Main.storyboard */; };
 		C2A66DC11C8C956600AE46B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A66DC01C8C956600AE46B2 /* Assets.xcassets */; };
 		C2A66DC41C8C956600AE46B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A66DC21C8C956600AE46B2 /* LaunchScreen.storyboard */; };
+		C2F0FD341C8FB47200EAF8D5 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0FD331C8FB47200EAF8D5 /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C2A66DC01C8C956600AE46B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2A66DC31C8C956600AE46B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2A66DC51C8C956600AE46B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2F0FD331C8FB47200EAF8D5 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				C2A66DBB1C8C956500AE46B2 /* ViewController.swift */,
 				C2A66DBD1C8C956500AE46B2 /* Main.storyboard */,
 				C2A66DCB1C8C964700AE46B2 /* Supporting Files */,
+				C2F0FD331C8FB47200EAF8D5 /* CalculatorBrain.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F0FD341C8FB47200EAF8D5 /* CalculatorBrain.swift in Sources */,
 				C2A66DBC1C8C956500AE46B2 /* ViewController.swift in Sources */,
 				C2A66DBA1C8C956500AE46B2 /* AppDelegate.swift in Sources */,
 			);
@@ -294,6 +298,7 @@
 				C2A66DCA1C8C956600AE46B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
